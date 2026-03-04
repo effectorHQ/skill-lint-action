@@ -1,0 +1,54 @@
+name: 'Skill Lint'
+description: 'Validate OpenClaw SKILL.md files and annotate PRs with inline errors'
+author: 'OpenClawHQ'
+
+branding:
+  icon: 'check-circle'
+  color: 'red'
+
+inputs:
+  path:
+    description: >
+      Path to search for SKILL.md files. Defaults to repository root.
+      Use '.' for root, 'skills/' to scan a specific directory, or
+      provide a direct path to a single SKILL.md file.
+    required: false
+    default: '.'
+
+  fail-on-warnings:
+    description: >
+      Exit with code 1 if any warnings are found, not just errors.
+      Useful for enforcing stricter quality in PRs.
+    required: false
+    default: 'false'
+
+  glob:
+    description: >
+      Glob pattern to find SKILL.md files. Overrides 'path' when set.
+      Example: 'skills/*/SKILL.md' for a monorepo skills directory.
+    required: false
+    default: ''
+
+  json:
+    description: >
+      Output results as JSON instead of human-readable text.
+      Useful for downstream processing in CI pipelines.
+    required: false
+    default: 'false'
+
+outputs:
+  errors:
+    description: 'Number of validation errors found across all files'
+    value: ${{ steps.run-lint.outputs.errors }}
+
+  warnings:
+    description: 'Number of validation warnings found across all files'
+    value: ${{ steps.run-lint.outputs.warnings }}
+
+  files-checked:
+    description: 'Number of SKILL.md files checked'
+    value: ${{ steps.run-lint.outputs.files-checked }}
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

@@ -1,0 +1,28 @@
+# Basic Usage — validate SKILL.md on every push and PR
+#
+# Add this file to your skill repo as .github/workflows/lint.yml
+# That's it. Every PR will get inline annotations on SKILL.md errors.
+
+name: Lint Skill
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/SKILL.md'
+  pull_request:
+    paths:
+      - '**/SKILL.md'
+
+jobs:
+  lint:
+    name: Validate SKILL.md
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint SKILL.md
+        uses: OpenClawHQ/skill-lint-action@v1
+
+      # Optional: print results summary in job output
+      # (Results are also posted as inline annotations automatically)

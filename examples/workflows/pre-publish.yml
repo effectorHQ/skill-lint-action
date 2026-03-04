@@ -1,0 +1,58 @@
+# Pre-publish Gate — lint must pass before tagging a release
+#
+# Combines skill-lint with a release workflow:
+# 1. On any push to main, lint the skill
+# 2. If lint passes AND commit message starts with "release:", create a git tag
+#    which triggers the actual clawhub publish step
+#
+# This pattern gives you: auto-versioning + quality gate + publish pipeline
+
+name: Validate and Release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate SKILL.md
+    runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ steps.lint.outputs.errors == '0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint SKILL.md
+        id: lint
+        uses: OpenClawHQ/skill-lint-action@v1
+        with:
+          fail-on-warnings: 'true'   # Quality gate before publish
+
+  release:
+    name: Tag Release
+    runs-on: ubuntu-latest
+    needs: validate
+    if: |
+      needs.validate.result == 'success' &&
+      startsWith(github.event.head_commit.message, 'release:')
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract version from commit message
+        id: version
+        run: |
+          VERSION=$(echo "${{ github.event.head_commit.message }}" | sed 's/release: //')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create release tag
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag v${{ steps.version.outputs.version }}
+          git push origin v${{ steps.version.outputs.version }}
+
+      # Add your clawhub publish step here:
+      # - name: Publish to ClawHub
+      #   run: clawhub publish
+      #   env:
+      #     CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}

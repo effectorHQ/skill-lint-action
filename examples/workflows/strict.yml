@@ -1,0 +1,32 @@
+# Strict Mode — fail the build on warnings too
+#
+# Use this for high-quality skills you want to publish to ClawHub.
+# Warnings include: missing emoji, short description, missing examples.
+
+name: Lint Skill (Strict)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    name: Validate SKILL.md (strict)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint SKILL.md
+        id: lint
+        uses: OpenClawHQ/skill-lint-action@v1
+        with:
+          fail-on-warnings: 'true'
+
+      # Print the outputs for downstream steps
+      - name: Show results
+        if: always()
+        run: |
+          echo "Files checked: ${{ steps.lint.outputs.files-checked }}"
+          echo "Errors: ${{ steps.lint.outputs.errors }}"
+          echo "Warnings: ${{ steps.lint.outputs.warnings }}"

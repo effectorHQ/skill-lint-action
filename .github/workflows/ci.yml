@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run tests
+        run: npm test
+
+  self-test:
+    name: Self-test (lint own fixtures)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run skill-lint-action on fixture (should pass)
+        uses: ./
+        with:
+          path: 'tests/fixtures/valid-complete.md'
+
+  validate-action-yml:
+    name: Validate action.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check action.yml is valid YAML
+        run: |
+          python3 -c "
+          import yaml, sys
+          with open('action.yml') as f:
+              yaml.safe_load(f)
+          print('✓ action.yml is valid YAML')
+          "

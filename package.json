@@ -1,0 +1,30 @@
+{
+  "name": "@openclawHQ/skill-lint-action",
+  "version": "1.0.0",
+  "description": "GitHub Action — validate OpenClaw SKILL.md files and annotate PRs with inline errors",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/action.test.js",
+    "test:watch": "node --test --watch tests/action.test.js",
+    "lint:example": "node dist/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "openclaw",
+    "skill",
+    "lint",
+    "github-action",
+    "clawhub"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenClawHQ/skill-lint-action"
+  },
+  "homepage": "https://github.com/OpenClawHQ/skill-lint-action#readme",
+  "bugs": {
+    "url": "https://github.com/OpenClawHQ/skill-lint-action/issues"
+  }
+}
