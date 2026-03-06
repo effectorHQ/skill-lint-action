@@ -10,16 +10,16 @@ on:
 jobs:
   security-analysis:
     name: Security Analysis
-    uses: OpenClawHQ/.github/.github/workflows/security-analysis.yml@main
+    uses: effectorHQ/.github/.github/workflows/security-analysis.yml@main
 
   simple-checks:
     name: Simple checks
-    uses: OpenClawHQ/.github/.github/workflows/simple-checks.yml@main
+    uses: effectorHQ/.github/.github/workflows/simple-checks.yml@main
 
   typo:
     name: Typo
-    uses: OpenClawHQ/.github/.github/workflows/typo.yml@main
+    uses: effectorHQ/.github/.github/workflows/typo.yml@main
 
   build:
     name: Build
-    uses: OpenClawHQ/.github/.github/workflows/build.yml@main
+    uses: effectorHQ/.github/.github/workflows/build.yml@main

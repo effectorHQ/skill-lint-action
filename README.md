@@ -2,7 +2,7 @@
 
 > Validate OpenClaw SKILL.md files in CI. Annotate PRs with inline errors. Zero config.
 
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-skill--lint--action-0075ca?logo=github)](https://github.com/marketplace/actions/skill-lint-action) [![CI](https://github.com/OpenClawHQ/skill-lint-action/actions/workflows/ci.yml/badge.svg)](https://github.com/OpenClawHQ/skill-lint-action/actions) [![Node.js 20](https://img.shields.io/badge/node-20-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/OpenClawHQ/.github/blob/main/CONTRIBUTING.md)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-skill--lint--action-0075ca?logo=github)](https://github.com/marketplace/actions/skill-lint-action) [![CI](https://github.com/effectorHQ/skill-lint-action/actions/workflows/ci.yml/badge.svg)](https://github.com/effectorHQ/skill-lint-action/actions) [![Node.js 20](https://img.shields.io/badge/node-20-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/effectorHQ/.github/blob/main/CONTRIBUTING.md)
 
 **[中文文档 →](./README.zh.md)**
 
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: OpenClawHQ/skill-lint-action@v1
+      - uses: effectorHQ/skill-lint-action@v1
 ```
 
 That's it. Open a PR with a `SKILL.md` change and you'll see inline annotations.
@@ -85,7 +85,7 @@ Use outputs to conditionally run downstream steps:
 ```yaml
 - name: Lint
   id: lint
-  uses: OpenClawHQ/skill-lint-action@v1
+  uses: effectorHQ/skill-lint-action@v1
 
 - name: Only runs if lint passed
   if: steps.lint.outputs.errors == '0'
@@ -99,13 +99,13 @@ Use outputs to conditionally run downstream steps:
 ### Single skill repo (basic)
 
 ```yaml
-- uses: OpenClawHQ/skill-lint-action@v1
+- uses: effectorHQ/skill-lint-action@v1
 ```
 
 ### Single skill repo (strict — fail on warnings too)
 
 ```yaml
-- uses: OpenClawHQ/skill-lint-action@v1
+- uses: effectorHQ/skill-lint-action@v1
   with:
     fail-on-warnings: 'true'
 ```
@@ -113,7 +113,7 @@ Use outputs to conditionally run downstream steps:
 ### Monorepo with multiple skills
 
 ```yaml
-- uses: OpenClawHQ/skill-lint-action@v1
+- uses: effectorHQ/skill-lint-action@v1
   with:
     path: 'skills/'
 ```
@@ -121,7 +121,7 @@ Use outputs to conditionally run downstream steps:
 ### Specific file
 
 ```yaml
-- uses: OpenClawHQ/skill-lint-action@v1
+- uses: effectorHQ/skill-lint-action@v1
   with:
     path: 'skills/my-skill/SKILL.md'
 ```
@@ -136,7 +136,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: OpenClawHQ/skill-lint-action@v1
+      - uses: effectorHQ/skill-lint-action@v1
         with:
           fail-on-warnings: 'true'
 
@@ -155,7 +155,7 @@ See `examples/workflows/` for complete workflow files.
 
 ## Why a GitHub Action vs the CLI?
 
-[`skill-lint`](https://github.com/OpenClawHQ/skill-lint) is the standalone CLI — run it locally before committing.
+[`skill-lint`](https://github.com/effectorHQ/skill-lint) is the standalone CLI — run it locally before committing.
 
 `skill-lint-action` wraps the same rules and adds:
 - **Inline PR annotations** — errors appear directly on the diff line, not just in logs
@@ -186,11 +186,11 @@ The core validation rules live in `dist/index.js` (self-contained) and the corre
 
 ## Related
 
-- [`skill-lint`](https://github.com/OpenClawHQ/skill-lint) — the CLI version of this linter
-- [`plugin-template`](https://github.com/OpenClawHQ/plugin-template) — SKILL.md starter template
-- [`cookbook`](https://github.com/OpenClawHQ/cookbook) — example skills you can reference
+- [`skill-lint`](https://github.com/effectorHQ/skill-lint) — the CLI version of this linter
+- [`plugin-template`](https://github.com/effectorHQ/plugin-template) — SKILL.md starter template
+- [`cookbook`](https://github.com/effectorHQ/cookbook) — example skills you can reference
 - [ClawHub](https://clawhub.com) — publish your validated skill to the registry
 
 ---
 
-MIT License — OpenClawHQ Contributors
+MIT License — effectorHQ Contributors

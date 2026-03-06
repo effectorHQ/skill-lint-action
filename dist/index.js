@@ -5,7 +5,7 @@
  * Zero external dependencies. Uses GitHub Actions workflow commands
  * (::error, ::warning, ::notice) for inline PR annotations.
  *
- * Built by OpenClawHQ — https://github.com/OpenClawHQ/skill-lint-action
+ * Built by effectorHQ — https://github.com/effectorHQ/skill-lint-action
  */
 
 import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
@@ -400,7 +400,7 @@ function renderSummaryTable(allResults, files) {
     core.summary.addTable(rows);
   }
 
-  core.summary.addRaw(`\n> Powered by [skill-lint-action](https://github.com/OpenClawHQ/skill-lint-action)\n`);
+  core.summary.addRaw(`\n> Powered by [skill-lint-action](https://github.com/effectorHQ/skill-lint-action)\n`);
 }
 
 // ─────────────────────────────────────────────

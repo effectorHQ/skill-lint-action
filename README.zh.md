@@ -2,7 +2,7 @@
 
 > 在 CI 中验证 OpenClaw SKILL.md 文件。为 PR 添加行内错误标注。零配置。
 
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-skill--lint--action-0075ca?logo=github)](https://github.com/marketplace/actions/skill-lint-action) [![CI](https://github.com/OpenClawHQ/skill-lint-action/actions/workflows/ci.yml/badge.svg)](https://github.com/OpenClawHQ/skill-lint-action/actions) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-skill--lint--action-0075ca?logo=github)](https://github.com/marketplace/actions/skill-lint-action) [![CI](https://github.com/effectorHQ/skill-lint-action/actions/workflows/ci.yml/badge.svg)](https://github.com/effectorHQ/skill-lint-action/actions) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 **[English →](./README.md)**
 
@@ -55,17 +55,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: OpenClawHQ/skill-lint-action@v1
+      - uses: effectorHQ/skill-lint-action@v1
 ```
 
 就这些。打开一个修改了 `SKILL.md` 的 PR，你就能看到行内标注。
 
-也可以使用 OpenClawHQ 的可复用 workflow，一行搞定：
+也可以使用 effectorHQ 的可复用 workflow，一行搞定：
 
 ```yaml
 jobs:
   lint:
-    uses: OpenClawHQ/.github/.github/workflows/reusable-skill-lint.yml@main
+    uses: effectorHQ/.github/.github/workflows/reusable-skill-lint.yml@main
     with:
       fail-on-warnings: true
 ```
@@ -94,7 +94,7 @@ jobs:
 ```yaml
 - name: Lint
   id: lint
-  uses: OpenClawHQ/skill-lint-action@v1
+  uses: effectorHQ/skill-lint-action@v1
 
 - name: 只在 lint 通过后运行
   if: steps.lint.outputs.errors == '0'
@@ -108,13 +108,13 @@ jobs:
 ### 单 skill repo（基础）
 
 ```yaml
-- uses: OpenClawHQ/skill-lint-action@v1
+- uses: effectorHQ/skill-lint-action@v1
 ```
 
 ### 严格模式（警告也会失败）
 
 ```yaml
-- uses: OpenClawHQ/skill-lint-action@v1
+- uses: effectorHQ/skill-lint-action@v1
   with:
     fail-on-warnings: 'true'
 ```
@@ -122,7 +122,7 @@ jobs:
 ### 包含多个 skills 的 monorepo
 
 ```yaml
-- uses: OpenClawHQ/skill-lint-action@v1
+- uses: effectorHQ/skill-lint-action@v1
   with:
     path: 'skills/'
 ```
@@ -137,7 +137,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: OpenClawHQ/skill-lint-action@v1
+      - uses: effectorHQ/skill-lint-action@v1
         with:
           fail-on-warnings: 'true'
 
@@ -154,7 +154,7 @@ jobs:
 
 ## 为什么用 Action 而不是 CLI？
 
-[`skill-lint`](https://github.com/OpenClawHQ/skill-lint) 是独立的 CLI——在提交前本地运行。
+[`skill-lint`](https://github.com/effectorHQ/skill-lint) 是独立的 CLI——在提交前本地运行。
 
 `skill-lint-action` 封装了相同的规则，并额外提供：
 - **PR 行内标注** — 错误直接出现在 diff 对应行，而不是只在日志里
@@ -185,11 +185,11 @@ jobs:
 
 ## 相关项目
 
-- [`skill-lint`](https://github.com/OpenClawHQ/skill-lint) — 本 linter 的 CLI 版本
-- [`plugin-template`](https://github.com/OpenClawHQ/plugin-template) — SKILL.md 起始模板
-- [`cookbook`](https://github.com/OpenClawHQ/cookbook) — 可参考的示例 skills
+- [`skill-lint`](https://github.com/effectorHQ/skill-lint) — 本 linter 的 CLI 版本
+- [`plugin-template`](https://github.com/effectorHQ/plugin-template) — SKILL.md 起始模板
+- [`cookbook`](https://github.com/effectorHQ/cookbook) — 可参考的示例 skills
 - [ClawHub](https://clawhub.com) — 将验证通过的 skill 发布到注册中心
 
 ---
 
-MIT License — OpenClawHQ Contributors
+MIT License — effectorHQ Contributors

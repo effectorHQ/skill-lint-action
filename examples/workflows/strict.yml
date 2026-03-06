@@ -19,7 +19,7 @@ jobs:
 
       - name: Lint SKILL.md
         id: lint
-        uses: OpenClawHQ/skill-lint-action@v1
+        uses: effectorHQ/skill-lint-action@v1
         with:
           fail-on-warnings: 'true'
 

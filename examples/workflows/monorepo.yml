@@ -29,7 +29,7 @@ jobs:
 
       - name: Lint all skills
         id: lint
-        uses: OpenClawHQ/skill-lint-action@v1
+        uses: effectorHQ/skill-lint-action@v1
         with:
           path: 'skills/'
           fail-on-warnings: 'false'   # set to 'true' for stricter enforcement

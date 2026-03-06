@@ -1,6 +1,6 @@
 name: 'Skill Lint'
 description: 'Validate OpenClaw SKILL.md files and annotate PRs with inline errors'
-author: 'OpenClawHQ'
+author: 'effectorHQ'
 
 branding:
   icon: 'check-circle'

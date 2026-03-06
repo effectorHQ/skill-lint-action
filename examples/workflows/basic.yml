@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Lint SKILL.md
-        uses: OpenClawHQ/skill-lint-action@v1
+        uses: effectorHQ/skill-lint-action@v1
 
       # Optional: print results summary in job output
       # (Results are also posted as inline annotations automatically)
