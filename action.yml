@@ -1,5 +1,5 @@
 name: 'Skill Lint'
-description: 'Validate OpenClaw SKILL.md files and annotate PRs with inline errors'
+description: 'Validate SKILL.md files and annotate PRs with inline errors'
 author: 'effectorHQ'
 
 branding:
