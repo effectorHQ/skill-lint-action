@@ -2,7 +2,7 @@
 
 > 在 CI 中验证 OpenClaw SKILL.md 文件。为 PR 添加行内错误标注。零配置。
 
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-skill--lint--action-0075ca?logo=github)](https://github.com/marketplace/actions/skill-lint-action) [![CI](https://github.com/effectorHQ/skill-lint-action/actions/workflows/ci.yml/badge.svg)](https://github.com/effectorHQ/skill-lint-action/actions) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-skill--lint--action-0075ca?logo=github)](https://github.com/marketplace/actions/skill-lint-action) [![CI](https://github.com/effectorHQ/skill-lint-action/actions/workflows/ci.yml/badge.svg)](https://github.com/effectorHQ/skill-lint-action/actions) [![License: Apache 2.0](https://img.shields.io/badge/license-Apache-2.0-blue.svg)](./LICENSE)
 
 **[English →](./README.md)**
 
@@ -192,4 +192,8 @@ jobs:
 
 ---
 
-MIT License — effectorHQ Contributors
+Apache License 2.0 — effectorHQ Contributors
+
+## License
+
+This project is currently licensed under the Apache 2.0 License 。
